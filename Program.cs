@@ -10,7 +10,8 @@ namespace aoc_2024_day01
     {
         static void Main(string[] args)
         {
-
+            Console.WriteLine("a");
+            Console.ReadKey();
         }
     }
 }
