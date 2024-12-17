@@ -13,17 +13,37 @@ namespace aoc_2024_day01
 
         static void Main(string[] args)
         {
-            List<int> bal = new List<int>();
-            List<int> jobb = new List<int>();
+            List<string> bal = new List<string>();
+            List<string> jobb = new List<string>();
 
             string[] lines = File.ReadAllLines("../../input.txt");
 
             foreach (string line in lines)
             {
                 string[] parts = line.Replace("\n", "").Replace("   ",";").Split(';');
-                bal.Add(int.Parse(parts[0]));
-                jobb.Add(int.Parse(parts[1]));
+                bal.Add(parts[0]);
+                jobb.Add(parts[1]);
             }
+
+
+            int[] balelemek = new int[5];
+            int[] jobelemek = new int[5];
+            for (int a = 0; a < bal.Count; a++)
+            {
+                for (int b = 0; b < bal[a].Length; b++)
+                {
+                    balelemek[b] = int.Parse(bal[a][b]+"");
+                    jobelemek[b] = int.Parse(jobb[a][b]+"");
+                }
+            }
+
+            foreach (int elem in balelemek)
+            {
+                Console.WriteLine(elem);
+            }
+
+
+
 
             Console.ReadKey();
         }
