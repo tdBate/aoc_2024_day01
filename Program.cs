@@ -10,8 +10,7 @@ namespace aoc_2024_day01
 {
     internal class Program
     {
-
-        static void Main(string[] args)
+        static void part1()
         {
             List<int> bal = new List<int>();
             List<int> jobb = new List<int>();
@@ -20,7 +19,7 @@ namespace aoc_2024_day01
 
             foreach (string line in lines)
             {
-                string[] parts = line.Replace("\n", "").Replace("   ",";").Split(';');
+                string[] parts = line.Replace("\n", "").Replace("   ", ";").Split(';');
                 bal.Add(int.Parse(parts[0]));
                 jobb.Add(int.Parse(parts[1]));
             }
@@ -28,7 +27,7 @@ namespace aoc_2024_day01
             int osszeg = 0;
 
             bal.Sort();
-            jobb.Sort();   
+            jobb.Sort();
 
             for (int a = 0; a < bal.Count; a++)
             {
@@ -36,14 +35,15 @@ namespace aoc_2024_day01
 
                 osszeg += Math.Abs(bal[a] - jobb[a]);
             }
-            
+
 
             Console.WriteLine(osszeg);
+        }
 
 
-
-
-
+        static void Main(string[] args)
+        {
+            //part1();
             Console.ReadKey();
         }
     }
