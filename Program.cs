@@ -25,7 +25,9 @@ namespace aoc_2024_day01
                 jobb.Add(parts[1]);
             }
 
+            int osszeg = 0;
 
+            //betűkre osztás
             int[] balelemek = new int[5];
             int[] jobelemek = new int[5];
             for (int a = 0; a < bal.Count; a++)
@@ -35,11 +37,23 @@ namespace aoc_2024_day01
                     balelemek[b] = int.Parse(bal[a][b]+"");
                     jobelemek[b] = int.Parse(jobb[a][b]+"");
                 }
+                Array.Sort(balelemek);
+                Array.Sort(jobelemek);
+
+                for (int b = 0; b < bal[a].Length; b++)
+                {
+
+                    osszeg += Math.Abs(balelemek[b] - jobelemek[b]);
+                    Console.WriteLine(balelemek[b]+" "+jobelemek[b]);
+                    //Console.WriteLine();
+                }
             }
+
+            Console.WriteLine(osszeg);
 
             foreach (int elem in balelemek)
             {
-                Console.WriteLine(elem);
+                //Console.WriteLine(elem);
             }
 
 
