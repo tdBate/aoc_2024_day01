@@ -16,7 +16,7 @@ namespace aoc_2024_day01
             List<string> bal = new List<string>();
             List<string> jobb = new List<string>();
 
-            string[] lines = File.ReadAllLines("../../input_fake.txt");
+            string[] lines = File.ReadAllLines("../../input.txt");
 
             foreach (string line in lines)
             {
@@ -28,13 +28,13 @@ namespace aoc_2024_day01
             int osszeg = 0;
 
             //betűkre osztás
-            int[] balelemek = new int[6];
-            int[] jobelemek = new int[6];
+            int[] balelemek = new int[5];
+            int[] jobelemek = new int[5];
             for (int a = 0; a < bal.Count; a++)
             {
                 for (int b = 0; b < bal[a].Length; b++)
                 {
-                    Console.WriteLine(int.Parse(bal[a][b] + ""));
+                    //Console.WriteLine(int.Parse(bal[a][b] + ""));
                     balelemek[b] = int.Parse(bal[a][b]+"");
                     jobelemek[b] = int.Parse(jobb[a][b]+"");
                 }
@@ -45,9 +45,11 @@ namespace aoc_2024_day01
                 {
 
                     osszeg += Math.Abs(balelemek[b] - jobelemek[b]);
-                    Console.WriteLine(balelemek[b]+" "+jobelemek[b]);
+                    Console.WriteLine(balelemek[b]+" "+jobelemek[b]+ " = "+Math.Abs(balelemek[b] - jobelemek[b]));
                     //Console.WriteLine();
                 }
+                Console.WriteLine(osszeg+"\n");
+                Console.ReadKey();
             }
 
             Console.WriteLine(osszeg);
