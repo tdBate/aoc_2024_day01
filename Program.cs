@@ -13,51 +13,33 @@ namespace aoc_2024_day01
 
         static void Main(string[] args)
         {
-            List<string> bal = new List<string>();
-            List<string> jobb = new List<string>();
+            List<int> bal = new List<int>();
+            List<int> jobb = new List<int>();
 
             string[] lines = File.ReadAllLines("../../input.txt");
 
             foreach (string line in lines)
             {
                 string[] parts = line.Replace("\n", "").Replace("   ",";").Split(';');
-                bal.Add(parts[0]);
-                jobb.Add(parts[1]);
+                bal.Add(int.Parse(parts[0]));
+                jobb.Add(int.Parse(parts[1]));
             }
 
             int osszeg = 0;
 
-            //betűkre osztás
-            int[] balelemek = new int[5];
-            int[] jobelemek = new int[5];
+            bal.Sort();
+            jobb.Sort();   
+
             for (int a = 0; a < bal.Count; a++)
             {
-                for (int b = 0; b < bal[a].Length; b++)
-                {
-                    //Console.WriteLine(int.Parse(bal[a][b] + ""));
-                    balelemek[b] = int.Parse(bal[a][b]+"");
-                    jobelemek[b] = int.Parse(jobb[a][b]+"");
-                }
-                Array.Sort(balelemek);
-                Array.Sort(jobelemek);
+                //Console.WriteLine(bal[a]);
 
-                for (int b = 0; b < bal[a].Length; b++)
-                {
-
-                    osszeg += Math.Abs(balelemek[b] - jobelemek[b]);
-                    Console.WriteLine(balelemek[b]+" "+jobelemek[b]+ " = "+Math.Abs(balelemek[b] - jobelemek[b]));
-                    //Console.WriteLine();
-                }
-                Console.WriteLine(osszeg+"\n");
-                Console.ReadKey();
+                osszeg += Math.Abs(bal[a] - jobb[a]);
             }
+            
 
             Console.WriteLine(osszeg);
 
-            foreach (int elem in balelemek)
-            {
-                //Console.WriteLine(elem);
-            }
 
 
 
