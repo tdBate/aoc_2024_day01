@@ -44,6 +44,21 @@ namespace aoc_2024_day01
         static void Main(string[] args)
         {
             //part1();
+
+            List<int> bal = new List<int>();
+            List<int> jobb = new List<int>();
+
+            string[] lines = File.ReadAllLines("../../input.txt");
+
+            foreach (string line in lines)
+            {
+                string[] parts = line.Replace("\n", "").Replace("   ", ";").Split(';');
+                bal.Add(int.Parse(parts[0]));
+                jobb.Add(int.Parse(parts[1]));
+            }
+            bal.Sort();
+            jobb.Sort();
+
             Console.ReadKey();
         }
     }
