@@ -40,59 +40,44 @@ namespace aoc_2024_day01
             Console.WriteLine(osszeg);
         }
 
-
-        static void Main(string[] args)
+        static void part2()
         {
-            //part1();
-
             List<string> bal = new List<string>();
             List<string> jobb = new List<string>();
 
-            string[] lines = File.ReadAllLines("../../input_fake.txt");
+            string[] lines = File.ReadAllLines("../../input.txt");
 
             foreach (string line in lines)
             {
                 string[] parts = line.Replace("\n", "").Replace("   ", ";").Split(';');
-                bal.Add(parts[0]);
-                jobb.Add(parts[1]);
+                bal.Add((parts[0]));
+                jobb.Add((parts[1]));
             }
-
 
             int osszeg = 0;
-
-            //betűkre osztás
-            int[] balelemek = new int[6];
-            int[] jobelemek = new int[6];
+            int szamlalo = 0;
             for (int a = 0; a < bal.Count; a++)
             {
-                for (int b = 0; b < bal[a].Length; b++)
+                szamlalo = 0;
+                //Console.WriteLine(bal[a][2] );
+                for (int b = 0; b < jobb.Count; b++)
                 {
-                    Console.WriteLine(int.Parse(bal[a][b] + ""));
-                    balelemek[b] = int.Parse(bal[a][b] + "");
-                    jobelemek[b] = int.Parse(jobb[a][b] + "");
+                    if (bal[a].Equals(jobb[b]))
+                    {
+                        szamlalo++;
+                    }
                 }
-                Array.Sort(balelemek);
-                Array.Sort(jobelemek);
-
-                for (int b = 0; b < bal[a].Length; b++)
-                {
-
-                    osszeg += Math.Abs(balelemek[b] - jobelemek[b]);
-                    Console.WriteLine(balelemek[b] + " " + jobelemek[b]);
-                    //Console.WriteLine();
-                }
+                osszeg += szamlalo * int.Parse(bal[a]);
             }
-
             Console.WriteLine(osszeg);
-
-            foreach (int elem in balelemek)
-            {
-                //Console.WriteLine(elem);
-            }
+        }
 
 
-
-
+        static void Main(string[] args)
+        {
+            part1();
+            part2();
+            
             Console.ReadKey();
         }
 
